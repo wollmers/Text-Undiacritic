@@ -1,0 +1,16 @@
+Build.PL
+Changes
+lib/Text/Undiacritic.pm
+MANIFEST
+META.yml
+README
+t/01_use.t
+t/02_test.t
+t/93_chars.t
+t/94_cover_all.t
+t/95_perl_critic.t
+t/96_prereq_build.t
+t/97_kwalitee.t
+t/98_pod.t
+t/99_pod_coverage.t
+Makefile.PL

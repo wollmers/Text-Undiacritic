@@ -1,0 +1,114 @@
+package Text::Undiacritic;
+
+use strict;
+use warnings;
+use version; our $VERSION = qv('0.02');
+
+require Exporter;
+our @ISA = qw(Exporter); ## no critic
+our @EXPORT_OK = qw(undiacritic);
+
+use charnames ':full';
+use Unicode::Normalize qw(decompose);
+
+sub undiacritic {
+    my $characters = shift;
+
+    if ( !$characters ) { return $characters; }
+
+    my $undiacritics = q{};
+
+    $characters = decompose($characters);
+    $characters =~ s/\p{NonspacingMark}//gxms;
+
+    for my $character ( split //xms, $characters ) {
+
+        my $name        = charnames::viacode( ord $character );
+        $name           =~ s/\s WITH \s .+ \z//xms;
+        $undiacritics   .= chr charnames::vianame( $name );
+
+    }
+
+    return $undiacritics;
+}
+
+1;
+
+__END__
+
+=pod
+
+=head1 NAME
+
+Text::Undiacritic - remove diacritics from a string
+
+=head1 VERSION
+
+This document describes Text::Undiacritic 0.01
+
+=head1 SYNOPSIS
+
+    use Text::Undiacritic qw(undiacritic);
+    $ascii_string = undiacritic( $czech_string );
+
+=head1 DESCRIPTION
+
+Changes characters with diacritics into their base characters.
+
+Also changes into base character in cases where UNICODE does not provide a decomposition.
+
+E.g. all characters '... WITH STROKE' like 'LATIN SMALL LETTER L WITH STROKE' do not have a decomposition. In the latter case the result will be 'LATIN SMALL LETTER L'.
+
+Removing diacritics is useful for matching text independent of spelling variants.
+
+=head1 SUBROUTINES/METHODS
+
+=head2 undiacritic
+
+    $ascii_string = undiacritic( $characters );
+
+Removes diacritics from $characters and returns a simplified character string.
+
+The input string must be in character modus, i.e. UNICODE code points.
+
+=head1 DIAGNOSTICS
+
+=head1 CONFIGURATION AND ENVIRONMENT
+
+=head1 DEPENDENCIES
+
+=over
+
+=item *
+
+L<version>
+
+=item *
+
+L<charnames>
+
+=item *
+
+L<Unicode::Normalize>
+
+=back
+
+=head1 INCOMPATIBILITIES
+
+=head1 BUGS AND LIMITATIONS
+
+There is no experience if this module gives useful results for scripts other than Latin.
+
+=head1 AUTHOR
+
+Helmut Wollmersdorfer C<< <WOLLMERS@cpan.org> >>
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright (c) 2007, Helmut Wollmersdorfer C<< <WOLLMERS@cpan.org> >>.
+All rights reserved.
+
+This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.
+
+=cut
