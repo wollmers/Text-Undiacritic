@@ -7,7 +7,6 @@ use Test::More;
 #use Test::Exception;
 
 use File::Basename;
-use File::Find;
 use charnames ':full';
 use utf8;
 

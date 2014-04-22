@@ -3,7 +3,6 @@ use warnings;
 use Test::More;
 
 use File::Basename;
-use File::Find;
 
 BEGIN {
     require lib;
