@@ -1,6 +1,8 @@
 Revision history for Text::Undiacritic
 
 {{$NEXT}}
+
+0.05  2014-08-16 23:46:36 CEST
       - badges in pod
 
 0.04  2014-08-16 07:53:06 CEST

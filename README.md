@@ -4,10 +4,9 @@ Text::Undiacritic - remove diacritics from a string
 
 <div>
 
+    <a href="https://travis-ci.org/wollmers/Text-Undiacritic"><img src="https://travis-ci.org/wollmers/Text-Undiacritic.png" alt="Text-Undiacritic"></a>
+    <a href='https://coveralls.io/r/wollmers/Text-Undiacritic?branch=master'><img src='https://coveralls.io/repos/wollmers/Text-Undiacritic/badge.png?branch=master' alt='Coverage Status' /></a>
 </div>
-
-<a href="https://travis-ci.org/wollmers/Text-Undiacritic"><img src="https://travis-ci.org/wollmers/Text-Undiacritic.png" alt="Text-Undiacritic"></a>
-<a href='https://coveralls.io/r/wollmers/Text-Undiacritic?branch=master'><img src='https://coveralls.io/repos/wollmers/Text-Undiacritic/badge.png?branch=master' alt='Coverage Status' /></a>
 
 # VERSION
 
