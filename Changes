@@ -1,6 +1,8 @@
 Revision history for Text::Undiacritic
 
 {{$NEXT}}
+
+0.04  2014-08-16 07:53:06 CEST
       - add travis
 
 0.03  2014-04-22 18:18:00 CEST
