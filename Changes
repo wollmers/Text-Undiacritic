@@ -1,6 +1,7 @@
 Revision history for Text::Undiacritic
 
 {{$NEXT}}
+      - improve performance
 
 0.05  2014-08-16 23:46:36 CEST
       - badges in pod

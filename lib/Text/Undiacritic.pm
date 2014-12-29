@@ -12,24 +12,25 @@ use charnames ':full';
 use Unicode::Normalize qw(decompose);
 
 sub undiacritic {
-    my $characters = shift;
+  my $characters = shift;
 
-    if ( !$characters ) { return $characters; }
+  if ( !$characters ) { return $characters; }
 
-    my $undiacritics = q{};
+  $characters = decompose($characters);
+  $characters =~ s/\p{NonspacingMark}//gxms;
 
-    $characters = decompose($characters);
-    $characters =~ s/\p{NonspacingMark}//gxms;
-
-    for my $character ( split //xms, $characters ) {
-
-        my $name        = charnames::viacode( ord $character );
-        $name           =~ s/\s WITH \s .+ \z//xms;
-        $undiacritics   .= chr charnames::vianame( $name );
-
+  return join('',
+    map {
+      (ord($_) > 127)
+        ? do {
+          my $charname = charnames::viacode(ord $_);
+          $charname =~ s/\s WITH \s .+ \z//x;
+          charnames::string_vianame($charname);
+        }
+        : $_;
     }
-
-    return $undiacritics;
+    split //, $characters
+  );
 }
 
 1;
