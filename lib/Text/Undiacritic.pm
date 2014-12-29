@@ -25,7 +25,8 @@ sub undiacritic {
         ? do {
           my $charname = charnames::viacode(ord $_);
           $charname =~ s/\s WITH \s .+ \z//x;
-          charnames::string_vianame($charname);
+          #charnames::string_vianame($charname);
+          chr charnames::vianame($charname);
         }
         : $_;
     }
